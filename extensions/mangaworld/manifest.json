@@ -1,1 +1,10 @@
+{
+  "name": "ExampleSource",
+  "id": "example",
+  "version": 1,
+  "lang": "en",
+  "type": "web",
+  "authors": ["you"],
+  "website": "https://your-website.example"
+}
 
