@@ -1,64 +1,34 @@
-/**
- * Example Tachimanga Web Extension
- * --------------------------------
- * This is a SAFE template that does not access any copyrighted website.
- * Replace the API endpoints with your own data source that you control.
- */
-
-const API_BASE = "https://your-api-endpoint.example"; // Your own API
-
-/**
- * Fetch list of manga / books from your API
- */
-async function getMangaList() {
-    const res = await fetch(`${API_BASE}/list`);
-    const items = await res.json();
-
-    // Tachimanga expects:
-    // id, title, thumbnail, url
-    return items.map(item => ({
-        id: item.id,
-        title: item.title,
-        thumbnail: item.thumbnail,
-        url: `${API_BASE}/manga/${item.id}`
-    }));
-}
-
-/**
- * Fetch details for a specific title
- */
-async function getMangaDetails(id) {
-    const res = await fetch(`${API_BASE}/manga/${id}`);
-    const d = await res.json();
-
-    return {
-        id: d.id,
-        title: d.title,
-        description: d.description,
-        author: d.author,
-        thumbnail: d.thumbnail,
-        chapters: d.chapters.map(ch => ({
-            id: ch.id,
-            title: ch.title,
-            number: ch.number
-        }))
-    };
-}
-
-/**
- * Fetch pages for a chapter
- */
-async function getChapterPages(mangaId, chapterId) {
-    const res = await fetch(`${API_BASE}/manga/${mangaId}/chapter/${chapterId}`);
-    const d = await res.json();
-
-    // Return an array of image URLs
-    return d.pages;
-}
-
 export default {
-    getMangaList,
-    getMangaDetails,
-    getChapterPages
-};
+  id: "sideflow",
+  name: "SideFlow",
+  version: "1",
+  lang: "en",
+  baseUrl: "https://sideflow.example.com", // replace with your manga site
 
+  // Return a list of manga
+  async getMangaList() {
+    // Example placeholder - replace with actual scraping logic
+    return [
+      { id: "manga1", title: "Example Manga 1", url: this.baseUrl + "/manga1" },
+      { id: "manga2", title: "Example Manga 2", url: this.baseUrl + "/manga2" }
+    ];
+  },
+
+  // Return list of chapters for a manga
+  async getChapters(mangaId) {
+    // Example placeholder
+    return [
+      { id: "chapter1", title: "Chapter 1", url: `${this.baseUrl}/${mangaId}/chapter1` },
+      { id: "chapter2", title: "Chapter 2", url: `${this.baseUrl}/${mangaId}/chapter2` }
+    ];
+  },
+
+  // Return image URLs for a chapter
+  async getPages(chapterId) {
+    // Example placeholder
+    return [
+      `${this.baseUrl}/images/${chapterId}/1.jpg`,
+      `${this.baseUrl}/images/${chapterId}/2.jpg`
+    ];
+  }
+};
