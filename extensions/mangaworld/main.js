@@ -3,32 +3,29 @@ export default {
   name: "SideFlow",
   version: "1",
   lang: "en",
-  baseUrl: "https://sideflow.example.com", // replace with your manga site
+  baseUrl: "https://mangadex.org",
 
-  // Return a list of manga
+  // Return a list of manga (dummy data for the app)
   async getMangaList() {
-    // Example placeholder - replace with actual scraping logic
     return [
-      { id: "manga1", title: "Example Manga 1", url: this.baseUrl + "/manga1" },
-      { id: "manga2", title: "Example Manga 2", url: this.baseUrl + "/manga2" }
+      { id: "one-piece", title: "One Piece", url: `${this.baseUrl}/title/5f0e9a9d-93fc-4a57-8b08-45e1e2f876c9` },
+      { id: "naruto", title: "Naruto", url: `${this.baseUrl}/title/8f1f7d69-c556-4bb5-8a56-2b3fa1d2bc11` }
     ];
   },
 
-  // Return list of chapters for a manga
+  // Return list of chapters for a manga (dummy structure)
   async getChapters(mangaId) {
-    // Example placeholder
     return [
-      { id: "chapter1", title: "Chapter 1", url: `${this.baseUrl}/${mangaId}/chapter1` },
-      { id: "chapter2", title: "Chapter 2", url: `${this.baseUrl}/${mangaId}/chapter2` }
+      { id: `${mangaId}-chapter-1`, title: "Chapter 1", url: `${this.baseUrl}/chapter/1/${mangaId}` },
+      { id: `${mangaId}-chapter-2`, title: "Chapter 2", url: `${this.baseUrl}/chapter/2/${mangaId}` }
     ];
   },
 
-  // Return image URLs for a chapter
+  // Return image URLs for a chapter (placeholder images)
   async getPages(chapterId) {
-    // Example placeholder
     return [
-      `${this.baseUrl}/images/${chapterId}/1.jpg`,
-      `${this.baseUrl}/images/${chapterId}/2.jpg`
+      `https://via.placeholder.com/800x1200?text=${chapterId}+Page+1`,
+      `https://via.placeholder.com/800x1200?text=${chapterId}+Page+2`
     ];
   }
 };
