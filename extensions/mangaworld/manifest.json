@@ -1,10 +1,9 @@
 {
-  "name": "ExampleSource",
-  "id": "example",
+  "id": "mangaworld",
+  "name": "MangaWorld",
   "version": "1",
   "lang": "en",
-  "type": "web",
-  "authors": ["you"],
-  "website": "https://your-website.example"
+  "author": "goldenforex",
+  "main": "main.js",
+  "description": "MangaWorld extension for Tachi iOS"
 }
-
